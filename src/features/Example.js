@@ -54,8 +54,16 @@ const DATA = [
 
 function Item(props) {
   const [price,setPrice] = useState(0.0);
+  const [dollar,setDollar] = useState(0.0);
   useEffect(() => {
-      getCoinPrice(props.currency, (val) => { console.log(val); setPrice(val[props.currency].rate);});
+      getCoinPrice(props.currency, (val) => { 
+        setPrice(val[props.currency].rate); 
+        let rate = parseFloat(val[props.currency].rate.replace(/,/g, ""));
+        let usd = parseFloat(val["USD"].rate.replace(/,/g, ""));
+        let dollar = rate / usd;
+       
+        setDollar((dollar).toFixed(2));
+        });
        
   }, [])
   
@@ -64,7 +72,7 @@ function Item(props) {
   <View style={{flex: 1, flexDirection: 'column'}}>
      <Text style={{color: '#6ACA25', fontWeight: 'bold', textAlign: 'right'}}>{price}</Text>
      <Text style={{color: '#6ACA25', fontWeight: 'bold', textAlign: 'right'}}>{price}</Text>
-     <Text style={{color: '#6ACA25', fontWeight: 'bold', textAlign: 'right'}}>{price}</Text>
+     <Text style={{color: '#6ACA25', fontWeight: 'bold', textAlign: 'right'}}>{"$" + dollar}</Text>
  </View>
  </View>)
 }

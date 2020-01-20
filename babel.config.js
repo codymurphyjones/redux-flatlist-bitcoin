@@ -13,7 +13,8 @@ module.exports = function(api) {
           "Screens": "./src/screens",
           "Features": "./src/features",
           "Utils": "./src/utils",
-          "With": "./src/with"
+          "With": "./src/with",
+          "State": "./src/state",
         }
       }]
     ]

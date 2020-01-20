@@ -3,6 +3,17 @@ A project created by Cody Jones for Pei, Inc Job Interview Process
 ## Getting Started 
 
 If you want to check the app out prior to loading it and running it on your system, there is a web app version located at [BTC Currency Conversion App](https://btcconversionapp-pei.now.sh/)
+
+It is a simple to use app.  You have your watcher area at the bottom, you can add currencies to your watcher list to scroll through them at your will.  
+
+Your selected currency is visible at the top, the default starting currency is BTC
+
+In order to select a new currency, click the search icon on the right side and type, the auto complete guide will help you select your next  currency.
+
+In order to add a currency to your watch list, simply click the + sign on the left side.  It will add the currently selected currency to your watchers.
+
+
+
 ```sh
 $ cd expo-project-template
 $ npm install

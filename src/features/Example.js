@@ -31,7 +31,7 @@ function App() {
 
     try {
     autoCompleteRef.current.clearInput();
-    } catch (e) {console.log(e)}
+    } catch (e) {}
   }
   
   return (

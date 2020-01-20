@@ -9,7 +9,7 @@ function* AsyncLoadCurrencies() {
   yield put({ type: ASYNC_LOAD_CURRENCIES, value: data, });
   }
   catch(e) {
-    console.log(e)
+    
   }
 }
 
@@ -48,7 +48,7 @@ function* AsyncGetCurrencyPrice(action) {
 
     rate = rate.toString().replace(/(0*)$/, "0")
     dollar = dollar.toString().replace(/(0*)$/, "00")
-    }, (e) => console.log(e));
+    });
     return {dollar, rate}
   }
   

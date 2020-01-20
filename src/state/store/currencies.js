@@ -1,7 +1,8 @@
 import { ASYNC_LOAD_CURRENCIES, ASYNC_ADD_WATCHER, SELECT_CURRENCY, ASYNC_GET_CURRENCY_PRICE, REMOVE_WATCHER } from "State/actions"
 import Data from "State/currencies.json"
 
-
+/*
+Initial State Model */
 const initialState = { 
   currencyList: Data
 ,

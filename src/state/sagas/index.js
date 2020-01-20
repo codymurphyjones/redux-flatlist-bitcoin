@@ -3,6 +3,10 @@ import { takeLatest, takeEvery, put, delay, all } from "redux-saga/effects";
 import {ASYNC_LOAD_CURRENCIES, LOAD_CURRENCIES, ASYNC_ADD_WATCHER, ADD_WATCHER, ASYNC_GET_CURRENCY_PRICE, GET_CURRENCY_PRICE} from "State/actions"
 import {getSupportedCurrencies, getCoinPrice} from "Utils/coindesk"
 
+/*
+LOAD_CURRENCIES
+*/
+
 function* AsyncLoadCurrencies() {
   try {
   let data = yield getSupportedCurrencies();
@@ -12,10 +16,13 @@ function* AsyncLoadCurrencies() {
     
   }
 }
-
 export function* watchLoadCurrencies() {
   yield takeLatest(LOAD_CURRENCIES, AsyncLoadCurrencies);
 }
+
+/*
+ADD_WATCHER
+*/
 
 function* AsyncAddWatcher(action) {
   yield put({ type: ASYNC_ADD_WATCHER, value: action.value});
@@ -25,6 +32,10 @@ export function* watchAddWatcher() {
   yield takeLatest(ADD_WATCHER, AsyncAddWatcher);
 }
 
+
+/*
+GET_CURRENCY_PRICE
+*/
 
 function* AsyncGetCurrencyPrice(action) {
 

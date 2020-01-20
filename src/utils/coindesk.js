@@ -8,7 +8,8 @@ export const getCoinPrice = async (coin, func, fail=()=>null) => {
     fail();
   })
 }
-
+/*
+Appears to have issues with CORS when using on Web, works fine on mobile */
 export const getSupportedCurrencies = async () => {
   const response = await axios.get(
     'https://api.coindesk.com/v1/bpi/supported-currencies.json', { headers: {

@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "TickerShare",
+    "name": "redux-flatlist-bitcoin",
     "slug": "ExpoExperiment",
     "privacy": "public",
     "sdkVersion": "36.0.0",

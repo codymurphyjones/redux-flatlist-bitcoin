@@ -18,7 +18,6 @@ export function* watchLoadCurrencies() {
 }
 
 function* AsyncAddWatcher(action) {
-  console.log(action);
   yield put({ type: ASYNC_ADD_WATCHER, value: action.value});
 }
 

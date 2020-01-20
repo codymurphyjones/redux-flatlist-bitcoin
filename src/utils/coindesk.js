@@ -5,7 +5,6 @@ export const getCoinPrice = async (coin, func, fail=()=>null) => {
   const response = await axios.get(
     'https://api.coindesk.com/v1/bpi/currentprice/'+ coin + '.json'
   ).then((value) => func(value.data.bpi)).catch((e) => {
-    console.log('https://api.coindesk.com/v1/bpi/currentprice/'+ coin + '.json')
     fail();
   })
 }

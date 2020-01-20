@@ -1,37 +1,12 @@
 // App.js
-import React, {useState, useEffect} from 'react';
-import { View, FlatList, TextInput, Text, StyleSheet } from 'react-native';
+import React, {useState, useEffect, useRef} from 'react';
+import { View, FlatList, Text, StyleSheet } from 'react-native';
 import IconButton from 'Components/IconButton'
-import { getCoinPrice, getSupportedCurrencies } from 'Utils/coindesk'
 import { useDispatch, useSelector } from "react-redux";
-import { LOAD_CURRENCIES, ADD_WATCHER, SELECT_CURRENCY, GET_CURRENCY_PRICE } from "State/actions"
+import { LOAD_CURRENCIES, ADD_WATCHER, SELECT_CURRENCY, REMOVE_WATCHER } from "State/actions"
 import {Autocomplete, withKeyboardAwareScrollView} from "react-native-dropdown-autocomplete";
-
-function Item(props) {
-  const dispatch = useDispatch();
-  const currencyPrice  = useSelector(state => state.currencies.currencyPrice[props.currency]);
-  
-  let rate = "";
-  let dollar = "";
-  
-  if(currencyPrice) {
-    rate = currencyPrice.rate;
-    dollar = currencyPrice.dollar;
-  }
-    
-  useEffect(() => {
-    dispatch({ type: GET_CURRENCY_PRICE, currency: props.currency });
-     
-  }, [props.currency])
-  
-  return ( <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', margin: 20, padding: 10, borderColor: '#434343', borderWidth: 4, borderRadius: 10, alignItems: "center", backgroundColor: '#000'}}>
-  <Text style={{color: '#6ACA25', fontSize: 48, fontWeight: 'bold'}}>{props.currency}</Text>
-  <View style={{flex: 1, flexDirection: 'column'}}>
-     <Text style={{color: '#6ACA25', fontWeight: 'bold', textAlign: 'right'}}>{"BTC " + rate}</Text>
-     <Text style={{color: '#6ACA25', fontWeight: 'bold', textAlign: 'right'}}>{"$" + dollar}</Text>
- </View>
- </View>)
-}
+import ConvertedCurrency from "Components/ConvertedCurrency"
+import TouchableCurrency from "Components/TouchableCurrency"
 
 
 function App() {
@@ -40,14 +15,9 @@ function App() {
   const currencyList = useSelector(state => state.currencies.currencyList);
   const watchers = useSelector(state => state.currencies.watchers);
   const activeCurrency = useSelector(state => state.currencies.activeCurrency);
+  const autoCompleteRef = useRef();
 
   const dispatch = useDispatch();
-
-  
-
-  async function addWatcher() {
-    dispatch({ type: ADD_WATCHER, value: activeCurrency });
-  }
 
 
   useEffect(() => {
@@ -58,19 +28,23 @@ function App() {
   function handleSelectItem(item, index) {
     setToggleSearch(false);
     dispatch({ type: SELECT_CURRENCY, value: item.currency })
+
+    try {
+    autoCompleteRef.current.clearInput();
+    } catch (e) {console.log(e)}
   }
   
   return (
     <View style={{flex: 1}}>
-      <Item currency={activeCurrency} />
+      <ConvertedCurrency currency={activeCurrency} />
       <View style={{width: "100%", padding: 5,paddingTop: 0,
     zIndex: 1,
     paddingHorizontal: 8}} >
-         <Autocomplete containerStyle={styles.autocompletesContainer} inputStyle={{width: "100%" }} inputContainerStyle={{width: "100%", padding: 5, display: toggleSearch ? 'flex' : 'none'}} style={{width: "100%", padding: 5}} handleSelectItem={handleSelectItem} minimumCharactersCount={0}  data={currencyList} valueExtractor={item => {  return item.currency }} />
+         <Autocomplete ref={autoCompleteRef} containerStyle={styles.autocompletesContainer} inputStyle={{width: "100%" }} inputContainerStyle={{width: "100%", padding: 5, display: toggleSearch ? 'flex' : 'none'}} style={{width: "100%", padding: 5}} handleSelectItem={handleSelectItem} minimumCharactersCount={0}  data={currencyList} valueExtractor={item => {  return item.currency }} />
       </View>
       <View style={{flexDirection: 'row', margin: 20, justifyContent: 'space-between'}}>
           <View style={{flexDirection: 'column', justifyContent: 'space-between', minWidth: 65}}>
-                <IconButton name="plus-circle" onButtonPress={addWatcher} />
+                <IconButton name="plus-circle" onButtonPress={() => {dispatch({ type: ADD_WATCHER, value: activeCurrency}); dispatch({ type: SELECT_CURRENCY, value: "BTC" })}} />
                 <IconButton name={toggleAll ? "check-circle" : "circle"} onButtonPress={() => setToggleAll(!toggleAll)} />
           </View>
           <View style={{flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center'}}>
@@ -81,7 +55,7 @@ function App() {
 
       <FlatList
         data={toggleAll ? currencyList : watchers}
-        renderItem={({ item }) => <Item {...item} />}
+        renderItem={({ item }) => <TouchableCurrency {...item} onButtonPress={() => dispatch({ type: REMOVE_WATCHER, value: item.currency })} />}
         keyExtractor={item => item.currency}
       />
     </View>)

@@ -1,18 +1,9 @@
 // App.js
-import React, {useState, useEffect} from 'react';
-import { View, FlatList, TextInput, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import IconButton from 'Components/IconButton'
-import { getCoinPrice, getSupportedCurrencies } from 'Utils/coindesk'
+import React, { useEffect} from 'react';
+import { View, Text,  } from 'react-native';
+import { GET_CURRENCY_PRICE } from "State/actions"
 import { useDispatch, useSelector } from "react-redux";
-import { LOAD_CURRENCIES, ADD_WATCHER, SELECT_CURRENCY, GET_CURRENCY_PRICE } from "State/actions"
-import {Autocomplete, withKeyboardAwareScrollView} from "react-native-dropdown-autocomplete";
 
-
-function withTouch(Component, onButtonPress) {
-    return (<TouchableOpacity style={{backgroundColor: 'rgba(0,0,0,0)'}} onPress={onButtonPress}>
-
-    </TouchableOpacity>);
-}
 
 
 export default function ConvertedCurrency(props) {

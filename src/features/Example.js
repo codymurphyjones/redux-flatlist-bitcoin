@@ -43,7 +43,7 @@ function App() {
          <Autocomplete ref={autoCompleteRef} containerStyle={styles.autocompletesContainer} inputStyle={{width: "100%", textTransform: "uppercase" }} inputContainerStyle={{width: "100%", padding: 5, display: toggleSearch ? 'flex' : 'none'}} style={{width: "100%", padding: 5}} handleSelectItem={handleSelectItem} minimumCharactersCount={0}  data={currencyList} valueExtractor={item => {  return item.currency }} rightContent rightTextExtractor={item => {  return item.country }} rightContentItemStyle={{color: "#000"}} />
       </View>
       <View style={{flexDirection: 'row', margin: 20, justifyContent: 'space-between'}}>
-          <View style={{flexDirection: 'column', justifyContent: 'space-between', minWidth: 65}}>
+          <View style={{flexDirection: 'column'}}>
                 <IconButton name="plus-circle" onButtonPress={() => {dispatch({ type: ADD_WATCHER, value: activeCurrency}); dispatch({ type: SELECT_CURRENCY, value: "BTC" })}} />
                 <IconButton name={toggleAll ? "check-circle" : "circle"} onButtonPress={() => setToggleAll(!toggleAll)} />
           </View>

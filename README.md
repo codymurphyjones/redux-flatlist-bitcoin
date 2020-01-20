@@ -1,7 +1,8 @@
 # redux-flatcoin-bitcoin project
 A project created by Cody Jones for Pei, Inc Job Interview Process
-## Getting Started
+## Getting Started 
 
+If you want to check the app out prior to loading it and running it on your system, there is a web app version located at [BTC Currency Conversion App](https://btcconversionapp-pei.now.sh/)
 ```sh
 $ cd expo-project-template
 $ npm install

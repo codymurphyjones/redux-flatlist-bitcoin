@@ -40,7 +40,7 @@ function App() {
       <View style={{width: "100%", padding: 5,paddingTop: 0,
     zIndex: 1,
     paddingHorizontal: 8}} >
-         <Autocomplete ref={autoCompleteRef} containerStyle={styles.autocompletesContainer} inputStyle={{width: "100%" }} inputContainerStyle={{width: "100%", padding: 5, display: toggleSearch ? 'flex' : 'none'}} style={{width: "100%", padding: 5}} handleSelectItem={handleSelectItem} minimumCharactersCount={0}  data={currencyList} valueExtractor={item => {  return item.currency }} rightContent rightTextExtractor={item => {  return item.country }} rightContentItemStyle={{color: "#000"}} />
+         <Autocomplete ref={autoCompleteRef} containerStyle={styles.autocompletesContainer} inputStyle={{width: "100%", textTransform: "uppercase" }} inputContainerStyle={{width: "100%", padding: 5, display: toggleSearch ? 'flex' : 'none'}} style={{width: "100%", padding: 5}} handleSelectItem={handleSelectItem} minimumCharactersCount={0}  data={currencyList} valueExtractor={item => {  return item.currency }} rightContent rightTextExtractor={item => {  return item.country }} rightContentItemStyle={{color: "#000"}} />
       </View>
       <View style={{flexDirection: 'row', margin: 20, justifyContent: 'space-between'}}>
           <View style={{flexDirection: 'column', justifyContent: 'space-between', minWidth: 65}}>

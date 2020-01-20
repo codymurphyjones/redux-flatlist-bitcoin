@@ -3,11 +3,8 @@
   "main": "./src/App.js",
   "version": "0.0.04",
   "scripts": {
-    "start": "expo start --web",
-    "forcestart": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "eject": "expo eject",
+    "start": "expo start",
+    "start:web": "expo start --web",
     "build": "expo build:web",
     "serve": "cd web-build && now --name BTCConversionApp-Pei --prod"
   },

@@ -41,3 +41,21 @@ Enables you to seperate individual features into their own folders in order sepe
 
 #### Utils
 `Utils` is the focus to add functions that your app utilizes that does not relate directly to the UI or render,or state management.  Whether its calculating an equation or requesting data from an API, seperating your data fetching into its own section has proven to help isolate issues in my experience.
+
+
+##### Events
+
+All ASYNC events are combined with their non-ASYNC equivalent to set up the watchers and effects for redux saga.  The other two are actions for my reducer that did not specifically require asynchronous flow.
+
+ASYNC_LOAD_CURRENCIES
+LOAD_CURRENCIES
+
+ADD_WATCHER
+ASYNC_ADD_WATCHER
+
+GET_CURRENCY_PRICE
+ASYNC_GET_CURRENCY_PRICE
+
+
+SELECT_CURRENCY
+REMOVE_WATCHER

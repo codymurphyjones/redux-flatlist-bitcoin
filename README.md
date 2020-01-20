@@ -1,4 +1,4 @@
-# redux-flatcoin-bitcoin project
+# redux-flatlist-bitcoin project
 A project created by Cody Jones for Pei, Inc Job Interview Process
 ## Getting Started 
 

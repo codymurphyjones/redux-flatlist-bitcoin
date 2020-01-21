@@ -50,7 +50,7 @@ function App() {
           <View style={{flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center'}}>
               <Text style={{color: '#6ACA25', fontWeight: 'bold',fontSize: 48, fontWeight: 'bold', textAlign: 'center'}}>Watchers</Text>
           </View>
-          <IconButton name="search-dollar" onButtonPress={() => setToggleSearch(!toggleSearch)} />
+          <IconButton name="search" onButtonPress={() => setToggleSearch(!toggleSearch)} />
       </View>
 
       <FlatList
@@ -58,9 +58,9 @@ function App() {
         renderItem={({ item }) => <TouchableCurrency {...item} onButtonPress={() => dispatch({ type: REMOVE_WATCHER, value: item.currency })} />}
         keyExtractor={item => item.currency}
       />
-    </View>)
+    </View>);
 
-  ;
+  
 }
 
 const styles = StyleSheet.create({

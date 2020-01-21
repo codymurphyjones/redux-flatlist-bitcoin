@@ -1,6 +1,6 @@
 // App.js
 import React from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome5'
+import Icon from 'react-native-vector-icons/FontAwesome'
 import { TouchableOpacity } from 'react-native';
 
 

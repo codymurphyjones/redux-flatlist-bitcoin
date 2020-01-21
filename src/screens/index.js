@@ -3,14 +3,14 @@ import React from 'react';
 
 import { SafeAreaView } from 'react-native';
 
-import Example from "Features/Example"
+import CurrencyConverter from "Features/CurrencyConverter"
 
 
 export default function App() {
   
   return (
     <SafeAreaView style={{flex: 1}}>
-    <Example />
+    <CurrencyConverter />
     </SafeAreaView>
   );
 }
